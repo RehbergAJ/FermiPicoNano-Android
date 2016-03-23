@@ -208,7 +208,7 @@ public class GUI extends javax.swing.JFrame {
         txtInput1.requestFocusInWindow();
     }//GEN-LAST:event_btnGuessActionPerformed
  
-    public String[] getNum(){              
+    public void getNum(){              
          String guessed[] = new String[3];
                  
                   
@@ -239,8 +239,8 @@ public class GUI extends javax.swing.JFrame {
            } else if (txta == -1){
              pikachu[1] = nano; 
            }   
-           //return txtOut.setText(txta + " " + txtb + " " + txtc + " : " + 
-                  // pikachu[0] + " " + pikachu[1] + " " + pikachu[2]);
+            txtOut.setText(txta + " " + txtb + " " + txtc + " : " + 
+                   pikachu[0] + " " + pikachu[1] + " " + pikachu[2]);
      }
     
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
