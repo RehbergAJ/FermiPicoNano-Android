@@ -11,9 +11,9 @@ import javafx.scene.paint.Color;
  */
 public class GUI extends javax.swing.JFrame {
     //-----------------------------------Declare Variables
-     public String txta;
-     public String txtb;
-     public String txtc;
+     public int txta;
+     public int txtb;
+     public int txtc;
      public String fermi = "Fermi";
      public String pico = "Pico";
      public String nano = "Nano";     
@@ -45,7 +45,8 @@ public class GUI extends javax.swing.JFrame {
         int y = ran.nextInt(10);
         int z = ran.nextInt(10);
         
-       
+        //populate array
+        pikachu = new String[3];        
         
         //---------------------------------------------populate lblHint
         lblHint.setText(Integer.toString(x)+Integer.toString(y)+Integer.toString(z));
@@ -198,28 +199,31 @@ public class GUI extends javax.swing.JFrame {
     /*
     @Guess button activation, counter increment
     */  
-        int txta = Integer.parseInt(txtInput1.getText());
-        int txtb = Integer.parseInt(txtInput2.getText());
-        int txtc = Integer.parseInt(txtInput3.getText());
+        txta = Integer.parseInt(txtInput1.getText());
+        txtb = Integer.parseInt(txtInput2.getText());
+        txtc = Integer.parseInt(txtInput3.getText());
         guess.add(new Integer[]{txta,txtb,txtc});
-               
-    
+                   
         numGuesses ++;
         txtInput1.requestFocusInWindow();
     }//GEN-LAST:event_btnGuessActionPerformed
  
     public String[] getNum(){              
          String guessed[] = new String[3];
-         
-         Integer.parseInt(guessed[0] = txtInput1.getText());
-         Integer.parseInt(guessed[1] = txtInput2.getText());
-         Integer.parseInt(guessed[2] = txtInput3.getText());
-         return guessed;
-         
-           if (guessed[0] = x){
-             return pikachu;
+                 
+                  
+           if (txta == x){
+             pikachu[2] = fermi;
+           } else if (txta == y){
+             pikachu[2] = pico;
+           } else if (txta == z){
+             pikachu[2] = pico;
+           } else if (txta == -1){
+             pikachu[2] = nano;      
              
          }
+           //return txtOut.setText(txta + " " + txtb + " " + txtc + " : " + 
+                  // pikachu[0] + " " + pikachu[1] + " " + pikachu[2]);
      }
     
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -275,7 +279,27 @@ public class GUI extends javax.swing.JFrame {
     
     
     
-    /*
+   
+    
+    
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnGuess;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblGuess;
+    private javax.swing.JLabel lblHint;
+    private javax.swing.JTextField txtInput1;
+    private javax.swing.JTextField txtInput2;
+    private javax.swing.JTextField txtInput3;
+    private javax.swing.JTextArea txtOut;
+    private javax.swing.JScrollPane txtOutput;
+    // End of variables declaration//GEN-END:variables
+}
+ /*
     @
     Bulbasaur
     Ivysaur
@@ -302,22 +326,3 @@ public class GUI extends javax.swing.JFrame {
     Pikachu
     Raichu
     */
-    
-    
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnGuess;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel lblGuess;
-    private javax.swing.JLabel lblHint;
-    private javax.swing.JTextField txtInput1;
-    private javax.swing.JTextField txtInput2;
-    private javax.swing.JTextField txtInput3;
-    private javax.swing.JTextArea txtOut;
-    private javax.swing.JScrollPane txtOutput;
-    // End of variables declaration//GEN-END:variables
-}
