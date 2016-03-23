@@ -213,15 +213,32 @@ public class GUI extends javax.swing.JFrame {
                  
                   
            if (txta == x){
-             pikachu[2] = fermi;
+             pikachu[1] = fermi;
            } else if (txta == y){
-             pikachu[2] = pico;
+             pikachu[1] = pico;
            } else if (txta == z){
-             pikachu[2] = pico;
+             pikachu[1] = pico;
            } else if (txta == -1){
-             pikachu[2] = nano;      
-             
+             pikachu[1] = nano;                   
          }
+           if (txtb == y){
+             pikachu[0] = fermi;
+           } else if (txtb == x){
+             pikachu[0] = pico;
+           } else if (txtb == z){
+             pikachu[0] = pico;
+           } else if (txtb == -1){
+             pikachu[0] = nano; 
+           }   
+           if (txtc == z){
+             pikachu[1] = fermi;
+           } else if (txta == y){
+             pikachu[1] = pico;
+           } else if (txta == x){
+             pikachu[1] = pico;
+           } else if (txta == -1){
+             pikachu[1] = nano; 
+           }   
            //return txtOut.setText(txta + " " + txtb + " " + txtc + " : " + 
                   // pikachu[0] + " " + pikachu[1] + " " + pikachu[2]);
      }
