@@ -2,7 +2,6 @@
 //import java.lang.reflect.Array;
 import java.util.Random;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javafx.scene.paint.Color;
 
 /**
@@ -16,19 +15,13 @@ public class GUI extends javax.swing.JFrame {
      public int txtc;
      public String fermi = "Fermi";
      public String pico = "Pico";
-     public String nano = "Nano";     
-     public ArrayList<Integer[]> guess;       
-     private int numero[];
+     public String nano = "Nano";         
      private final String pikachu[];
      public int numGuesses = 0;
      public int x;
      public int y;
      public int z;
      public Color error = Color.RED;
-//     Random ran = new Random();        
-//        int x = ran.nextInt(10);
-//        int y = ran.nextInt(10);
-//        int z = ran.nextInt(10);
      
      //----------------------------------End variables list
      
@@ -36,7 +29,7 @@ public class GUI extends javax.swing.JFrame {
      
      
     /**
-     * Creates new form GUI
+     * @Creates new form GUI
      */
     public GUI() {
         initComponents();
@@ -51,7 +44,6 @@ public class GUI extends javax.swing.JFrame {
         //---------------------------------------------populate lblHint
         lblHint.setText(Integer.toString(x)+Integer.toString(y)+Integer.toString(z));
         
-        guess = new ArrayList();
         
         //populate numero array with random values
         //numero = new int[]{x,y,z};        
@@ -101,6 +93,7 @@ public class GUI extends javax.swing.JFrame {
         txtOut.setEditable(false);
         txtOut.setColumns(20);
         txtOut.setRows(5);
+        txtOut.setFocusable(false);
         txtOutput.setViewportView(txtOut);
 
         btnClear.setText("Clear");
@@ -202,14 +195,15 @@ public class GUI extends javax.swing.JFrame {
         txta = Integer.parseInt(txtInput1.getText());
         txtb = Integer.parseInt(txtInput2.getText());
         txtc = Integer.parseInt(txtInput3.getText());
-        guess.add(new Integer[]{txta,txtb,txtc});
                    
         numGuesses ++;
         txtInput1.requestFocusInWindow();
+        
+        getNum();
     }//GEN-LAST:event_btnGuessActionPerformed
  
     public void getNum(){              
-         String guessed[] = new String[3];
+         //String guessed[] = new String[3];
                  
                   
            if (txta == x){
@@ -231,16 +225,20 @@ public class GUI extends javax.swing.JFrame {
              pikachu[0] = nano; 
            }   
            if (txtc == z){
-             pikachu[1] = fermi;
-           } else if (txta == y){
-             pikachu[1] = pico;
-           } else if (txta == x){
-             pikachu[1] = pico;
-           } else if (txta == -1){
-             pikachu[1] = nano; 
-           }   
-            txtOut.setText(txta + " " + txtb + " " + txtc + " : " + 
-                   pikachu[0] + " " + pikachu[1] + " " + pikachu[2]);
+             pikachu[2] = fermi;
+           } else if (txtc == y){
+             pikachu[2] = pico;
+           } else if (txtc == x){
+             pikachu[2] = pico;
+           } else if (txtc == -1){
+             pikachu[2] = nano; 
+           }            
+            txtOut.append(txta + " " + txtb + " " + txtc + " : " + 
+                   pikachu[0] + " " + pikachu[1] + " " + pikachu[2] + "\n");
+            
+            txtInput1.setText("");
+            txtInput2.setText("");
+            txtInput3.setText("");
      }
     
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
