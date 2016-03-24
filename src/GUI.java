@@ -1,7 +1,6 @@
 
 //import java.lang.reflect.Array;
 import java.util.Random;
-import java.util.ArrayList;
 import javafx.scene.paint.Color;
 
 /**
@@ -18,10 +17,13 @@ public class GUI extends javax.swing.JFrame {
      public String nano = "Nano";         
      private final String pikachu[];
      public int numGuesses = 0;
-     public int x;
-     public int y;
-     public int z;
+     //---------------Make random gen public
+      Random ran = new Random();        
+        int x = ran.nextInt(10);
+        int y = ran.nextInt(10);
+        int z = ran.nextInt(10);             
      public Color error = Color.RED;
+     
      
      //----------------------------------End variables list
      
@@ -33,11 +35,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
-        Random ran = new Random();        
-        int x = ran.nextInt(10);
-        int y = ran.nextInt(10);
-        int z = ran.nextInt(10);
-        
+       
         //populate array
         pikachu = new String[3];        
         
@@ -204,10 +202,7 @@ public class GUI extends javax.swing.JFrame {
  
     public void getNum(){              
          //String guessed[] = new String[3];
-         Random ran = new Random();        
-        int x = ran.nextInt(10);
-        int y = ran.nextInt(10);
-        int z = ran.nextInt(10);
+         
                  
                   
            if (txta == x){
@@ -238,11 +233,13 @@ public class GUI extends javax.swing.JFrame {
              pikachu[2] = nano; 
            }            
             txtOut.append(txta + " " + txtb + " " + txtc + " : " + 
-                   pikachu[0] + " " + pikachu[1] + " " + pikachu[2] + "\n");
+                   pikachu[0] + " " + pikachu[1] + " " + pikachu[2] + "Guess number: " + numGuesses + "\n");
             
             txtInput1.setText("");
             txtInput2.setText("");
             txtInput3.setText("");
+            
+           
      }
     
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
