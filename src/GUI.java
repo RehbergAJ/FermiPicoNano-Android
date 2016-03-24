@@ -3,6 +3,7 @@
 import java.util.Random;
 import javafx.scene.paint.Color;
 
+
 /**
  *
  * @author Andrew
@@ -23,12 +24,12 @@ public class GUI extends javax.swing.JFrame {
         int y = ran.nextInt(10);
         int z = ran.nextInt(10);             
      public Color error = Color.RED;
+     public String validate = "\\w";
+     
      
      
      //----------------------------------End variables list
-     
-     
-     
+         
      
     /**
      * @Creates new form GUI
@@ -37,7 +38,10 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
        
         //populate array
-        pikachu = new String[3];        
+        pikachu = new String[3];
+        btnGuess.setEnabled(false);
+        
+     
         
         //---------------------------------------------populate lblHint
         lblHint.setText(Integer.toString(x)+Integer.toString(y)+Integer.toString(z));
@@ -80,6 +84,24 @@ public class GUI extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 204, 204));
 
         lblGuess.setText("Enter Guesses: (0-9)");
+
+        txtInput1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtInput1KeyPressed(evt);
+            }
+        });
+
+        txtInput2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtInput2KeyPressed(evt);
+            }
+        });
+
+        txtInput3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtInput3KeyReleased(evt);
+            }
+        });
 
         btnGuess.setText("Guess!");
         btnGuess.addActionListener(new java.awt.event.ActionListener() {
@@ -190,6 +212,7 @@ public class GUI extends javax.swing.JFrame {
     /*
     @Guess button activation, counter increment
     */  
+    
         txta = Integer.parseInt(txtInput1.getText());
         txtb = Integer.parseInt(txtInput2.getText());
         txtc = Integer.parseInt(txtInput3.getText());
@@ -198,12 +221,37 @@ public class GUI extends javax.swing.JFrame {
         txtInput1.requestFocusInWindow();
         
         getNum();
+      
+        
     }//GEN-LAST:event_btnGuessActionPerformed
  
+//   public void actionPerformed(java.awt.event.KeyEvent e) {
+//        if ((!"".equals(e.txtInput1.getText())) & (!"".equals(txtInput2.getText()))&(!"".equals(txtInput3.getText()))) {
+//            
+//                   btnGuess.setEnabled(true);
+//               
+//           
+//        } 
+//    }  
+    
+    
+    
     public void getNum(){              
          //String guessed[] = new String[3];
-         
-                 
+         /*if (txta != Integer.parseInt(validate)){        
+        JOptionPane.showMessageDialog (null, "YOU IDIOT!", "Error!", JOptionPane.ERROR_MESSAGE);    
+    } else if (txta == -1) {
+        JOptionPane.showMessageDialog (null, "YOU IDIOT!", "Error!", JOptionPane.ERROR_MESSAGE);    
+        } 
+         */
+           if ((txta == x) & (txtb == y) & (txtc == z)){
+               txtOut.append("CONGRATULATIONS!\n YOU WIN!\n It only took you " + 
+                       numGuesses + " " + "Guesses" +"\n" + "The answer is: " + x + y + z);
+               btnGuess.setEnabled(false);
+               txtInput1.setEnabled(false);
+               txtInput2.setEnabled(false);
+               txtInput3.setEnabled(false);
+           }      
                   
            if (txta == x){
              pikachu[0] = fermi;
@@ -231,33 +279,66 @@ public class GUI extends javax.swing.JFrame {
              pikachu[2] = pico;
            } else if (txtc != (y | z)){
              pikachu[2] = nano; 
-           }            
+                       
             txtOut.append(txta + " " + txtb + " " + txtc + " : " + 
-                   pikachu[0] + " " + pikachu[1] + " " + pikachu[2] + "Guess number: " + numGuesses + "\n");
+                   pikachu[0] + " " + pikachu[1] + " " + pikachu[2] + " " + "Guess number: " + numGuesses + "\n");
             
             txtInput1.setText("");
             txtInput2.setText("");
             txtInput3.setText("");
             
+           }
            
+            
      }
     
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        Random ran = new Random();        
-        int x = ran.nextInt(10);
-        int y = ran.nextInt(10);
-        int z = ran.nextInt(10);
+               
+         x = ran.nextInt(10);
+         y = ran.nextInt(10);
+         z = ran.nextInt(10);
         lblHint.setText(Integer.toString(x)+Integer.toString(y)+Integer.toString(z));
         txtInput1.setText("");
         txtInput2.setText("");
         txtInput3.setText("");
         txtOut.setText("");        
         numGuesses = 0;
-        txtInput1.requestFocusInWindow();                
+        txtInput1.requestFocusInWindow();     
+        btnGuess.enableInputMethods(false);
+        txtInput1.setEnabled(true);
+        txtInput2.setEnabled(true);
+        txtInput3.setEnabled(true);
     }//GEN-LAST:event_btnClearActionPerformed
 
+    private void txtInput1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInput1KeyPressed
+        if((txtInput2.getText().length() != 1)||(txtInput1.getText().length() != 1)||(txtInput3.getText().length() != 1)){
+              btnGuess.setEnabled(false);
+          } else {
+                  btnGuess.setEnabled(true);
+                  }
+        
+    }//GEN-LAST:event_txtInput1KeyPressed
+
+    private void txtInput2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInput2KeyPressed
+
+         if((txtInput1.getText().length() != 1)||(txtInput2.getText().length() != 1)||(txtInput3.getText().length() != 1)){
+              btnGuess.setEnabled(false);
+          } else {
+                  btnGuess.setEnabled(true);
+                  }
+        
     
-    
+    }//GEN-LAST:event_txtInput2KeyPressed
+
+    private void txtInput3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInput3KeyReleased
+    if((txtInput1.getText().length() != 1)||(txtInput2.getText().length() != 1)||(txtInput3.getText().length() != 1)){
+              btnGuess.setEnabled(false);
+          } else {
+                  btnGuess.setEnabled(true);
+                  }
+    }//GEN-LAST:event_txtInput3KeyReleased
+
+ 
     /**
      * @param args the command line arguments
      */
