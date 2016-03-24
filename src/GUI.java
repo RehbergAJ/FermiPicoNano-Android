@@ -204,25 +204,29 @@ public class GUI extends javax.swing.JFrame {
  
     public void getNum(){              
          //String guessed[] = new String[3];
+         Random ran = new Random();        
+        int x = ran.nextInt(10);
+        int y = ran.nextInt(10);
+        int z = ran.nextInt(10);
                  
                   
            if (txta == x){
-             pikachu[1] = fermi;
+             pikachu[0] = fermi;
            } else if (txta == y){
-             pikachu[1] = pico;
+             pikachu[0] = pico;
            } else if (txta == z){
-             pikachu[1] = pico;
-           } else if (txta == -1){
-             pikachu[1] = nano;                   
+             pikachu[0] = pico;
+           } else if (txta != (y | z)){
+             pikachu[0] = nano;                   
          }
            if (txtb == y){
-             pikachu[0] = fermi;
+             pikachu[1] = fermi;
            } else if (txtb == x){
-             pikachu[0] = pico;
+             pikachu[1] = pico;
            } else if (txtb == z){
-             pikachu[0] = pico;
-           } else if (txtb == -1){
-             pikachu[0] = nano; 
+             pikachu[1] = pico;
+           } else if (txtb != (x | z)){
+             pikachu[1] = nano; 
            }   
            if (txtc == z){
              pikachu[2] = fermi;
@@ -230,7 +234,7 @@ public class GUI extends javax.swing.JFrame {
              pikachu[2] = pico;
            } else if (txtc == x){
              pikachu[2] = pico;
-           } else if (txtc == -1){
+           } else if (txtc != (y | z)){
              pikachu[2] = nano; 
            }            
             txtOut.append(txta + " " + txtb + " " + txtc + " : " + 
